@@ -1,0 +1,41 @@
+name: Compile & Release Contract
+
+on:
+  push:
+    branches:
+      - master
+      - main
+    paths:
+      - 'data.json'
+      - 'src/**'
+      - 'Makefile'
+      - 'build.sh'
+
+jobs:
+  build_release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      
+    steps:
+      - name: Checkout Code Repository
+        uses: actions/checkout@v4
+
+      - name: Setup TeXLive and Build Environment
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-luatex texlive-lang-european texlive-latex-extra latexmk gawk
+
+      - name: Compile PolyContract Engine PDF
+        run: |
+          make all
+          
+      - name: Upload Dynamic PDF to GitHub Releases
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: "Latest Contract Build"
+          body: "Automated PolyContract Engine build. Driven strictly from `data.json`."
+          files: dist/*.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

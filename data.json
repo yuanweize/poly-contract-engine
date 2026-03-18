@@ -1,0 +1,75 @@
+{
+  "project": {
+    "languages": ["cz", "en"],
+    "modules": [
+      "01_parties",
+      "02_subject",
+      "03_term",
+      "04_rent",
+      "05_deposit",
+      "06_handover",
+      "07_rights",
+      "08_final"
+    ]
+  },
+  "contract": {
+    "date": "2026-03-31",
+    "place": "Praha"
+  },
+  "landlords": [
+    {
+      "name": "Elon Musk",
+      "birth_date": "28.6.1971",
+      "phone": "555 123 4567",
+      "address": "1 Rocket Road, Hawthorne, CA 90250, USA"
+    },
+    {
+      "name": "Tim Cook",
+      "birth_date": "1.11.1960",
+      "phone": "555 987 6543",
+      "address": "1 Apple Park Way, Cupertino, CA 95014, USA"
+    }
+  ],
+  "tenants": [
+    {
+      "name": "Taylor Swift",
+      "address": "13 Cornelia Street, New York, NY 10014, USA",
+      "birth_date": "13.12.1989",
+      "passport": "TS198913",
+      "phone": "+1 555 333 1313",
+      "email": "hello@taylorswift.com"
+    },
+    {
+      "name": "Selena Gomez",
+      "address": "1 Main Street, Grand Prairie, TX 75050, USA",
+      "birth_date": "22.7.1992",
+      "passport": "SG199272",
+      "phone": "+1 555 444 2222",
+      "email": "hello@selenagomez.com"
+    }
+  ],
+  "property": {
+    "unit_number": "2",
+    "disposition": "1+kk",
+    "area_m2": "46",
+    "floor": "1.NP",
+    "building_number": "II",
+    "building_registration": "4",
+    "parcel_number": "298",
+    "cadastral_territory": "Lysolaje",
+    "municipality": "Praha",
+    "address": "Starodvorská 4/5, Praha 6 – Lysolaje, 165 00"
+  },
+  "rent_details": {
+    "start_date": "1.9.2026",
+    "end_date": "31.8.2027",
+    "rent_amount": "25.000",
+    "services_amount": "5.000",
+    "total_amount": "30.000",
+    "payment_day": "5.",
+    "bank_account": "123456789/0100"
+  },
+  "deposit": {
+    "amount": "12.000"
+  }
+}

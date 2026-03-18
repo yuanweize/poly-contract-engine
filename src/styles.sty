@@ -1,0 +1,30 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{styles}[2026/03/15 Custom styles for rental contract]
+
+\RequirePackage{fontspec}
+\RequirePackage{geometry}
+\geometry{a4paper, margin=2cm}
+
+\RequirePackage{paracol}
+\RequirePackage{hyperref}
+\RequirePackage{enumitem}
+
+% Setup fonts: LuaLaTeX needs fontspec
+\setmainfont{Latin Modern Roman}[
+    Ligatures=TeX,
+    Scale=1.0
+]
+\RequirePackage{polyglossia}
+\setmainlanguage{czech}
+\setotherlanguage{english}
+
+% No paragraph indentation, space between paragraphs
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+
+% Paracol configurations
+\columnratio{0.5}
+\setlength{\columnsep}{1em}
+\setlength{\columnseprule}{0.4pt}
+
+\endinput
