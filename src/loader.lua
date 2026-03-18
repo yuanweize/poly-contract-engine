@@ -94,27 +94,58 @@ for k, v in pairs(data.rent_details) do
 end
 define_tex_cmd("DepositAmount", data.deposit.amount)
 
--- Setup iteration capability for landlords and tenants
--- Because latex arrays are hard, we'll build latex content dynamically here for the lists
-local function generate_party_latex(list, role)
-    local out = ""
-    for i, person in ipairs(list) do
-        out = out .. "\\textbf{" .. (person.name or "") .. "}\\\\"
-        if person.birth_date then out = out .. "datum narození/DOB: " .. person.birth_date .. "\\\\" end
-        if person.passport then out = out .. "č.pasu/Passport: " .. person.passport .. "\\\\" end
-        if person.address then out = out .. "Adresa/Address: " .. person.address .. "\\\\" end
-        if person.phone then out = out .. "Mobil/Phone: " .. person.phone .. "\\\\" end
-        if person.email then out = out .. "Email: " .. person.email .. "\\\\" end
-        
-        if i < #list then
-            out = out .. "\\vspace{0.2cm}\\textit{a / and}\\vspace{0.2cm}\\\\"
+local i18n = {
+    cz = { title = "Nájemní smlouva", dob = "datum narození", passport = "č.pasu", address = "Adresa", phone = "Mobil", email = "Email", and_word = "a" },
+    en = { title = "Rental Agreement", dob = "DOB", passport = "Passport", address = "Address", phone = "Phone", email = "Email", and_word = "and" },
+    zh_cn = { title = "房屋租赁合同", dob = "出生日期", passport = "护照号", address = "地址", phone = "手机", email = "邮箱", and_word = "和" },
+    zh_tw = { title = "房屋租賃合約", dob = "出生日期", passport = "護照號", address = "地址", phone = "手機", email = "郵箱", and_word = "和" },
+    ja = { title = "賃貸借契約書", dob = "生年月日", passport = "パスポート番号", address = "住所", phone = "電話番号", email = "メール", and_word = "と" },
+    ko = { title = "임대차 계약서", dob = "생년월일", passport = "여권 번호", address = "주소", phone = "전화번호", email = "이메일", and_word = "및" },
+    de = { title = "Mietvertrag", dob = "Geburtsdatum", passport = "Reisepass Nr.", address = "Adresse", phone = "Telefon", email = "E-Mail", and_word = "und" },
+    fr = { title = "Contrat de Location", dob = "Date de naissance", passport = "Passeport", address = "Adresse", phone = "Téléphone", email = "Email", and_word = "et" },
+    es = { title = "Contrato de Arrendamiento", dob = "Fecha de nacimiento", passport = "Pasaporte", address = "Dirección", phone = "Teléfono", email = "Correo", and_word = "y" },
+    it = { title = "Contratto di Locazione", dob = "Data di nascita", passport = "Passaporto", address = "Indirizzo", phone = "Telefono", email = "Email", and_word = "e" },
+    ru = { title = "Договор Аренды", dob = "Дата рождения", passport = "Паспорт", address = "Адрес", phone = "Телефон", email = "Email", and_word = "и" },
+    pt = { title = "Contrato de Arrendamento", dob = "Data de nascimento", passport = "Passaporte", address = "Endereço", phone = "Telefone", email = "Email", and_word = "e" },
+    nl = { title = "Huurovereenkomst", dob = "Geboortedatum", passport = "Paspoort", address = "Adres", phone = "Telefoon", email = "E-mail", and_word = "en" }
+}
+
+for i, lang in ipairs(data.project.languages) do
+    local trans = i18n[lang] or i18n["en"]
+    local lang_suffix = lang:gsub("_", ""):upper()
+    
+    tex_print("\\newcommand{\\ContractTitle" .. lang_suffix .. "}{" .. trans.title .. "}")
+    
+    local function generate_party_latex(list, role)
+        local out = ""
+        for idx, person in ipairs(list) do
+            out = out .. "\\textbf{" .. (person.name or "") .. "}\\\\"
+            if person.birth_date then out = out .. trans.dob .. ": " .. person.birth_date .. "\\\\" end
+            if person.passport then out = out .. trans.passport .. ": " .. person.passport .. "\\\\" end
+            if person.address then out = out .. trans.address .. ": " .. person.address .. "\\\\" end
+            if person.phone then out = out .. trans.phone .. ": " .. person.phone .. "\\\\" end
+            if person.email then out = out .. trans.email .. ": " .. person.email .. "\\\\" end
+            
+            if idx < #list then
+                out = out .. "\\vspace{0.2cm}\\textit{" .. trans.and_word .. "}\\vspace{0.2cm}\\\\"
+            end
         end
+        tex_print("\\newcommand{\\Contract" .. role .. "s" .. lang_suffix .. "}{" .. out .. "}")
     end
-    tex_print("\\newcommand{\\Contract" .. role .. "s}{" .. out .. "}")
+    
+    generate_party_latex(data.landlords, "Landlord")
+    generate_party_latex(data.tenants, "Tenant")
 end
 
-generate_party_latex(data.landlords, "Landlord")
-generate_party_latex(data.tenants, "Tenant")
+-- Export Global Titles based on active selection
+local lang1_suffix = data.project.languages[1]:gsub("_", ""):upper()
+tex_print("\\newcommand{\\DocTitlePrimary}{\\ContractTitle" .. lang1_suffix .. "}")
+if #data.project.languages > 1 then
+    local lang2_suffix = data.project.languages[2]:gsub("_", ""):upper()
+    tex_print("\\newcommand{\\DocTitleSecondary}{\\ContractTitle" .. lang2_suffix .. "}")
+else
+    tex_print("\\newcommand{\\DocTitleSecondary}{}")
+end
 
 -- Inject Dynamic Fonts and Languages
 local polyglossia_map = {

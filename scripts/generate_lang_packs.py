@@ -12,17 +12,17 @@ langs = {
 
 clauses = {
     "01_parties.tex": {
-        "zh_cn": r"\section*{1. 合同当事人}\n\textbf{出租人（房东）}\n\ContractLandlords\n\vspace{0.5cm}\n\textbf{承租人（租客）}\n\ContractTenants\n共同居住于：\Propaddress",
-        "zh_tw": r"\section*{1. 合約當事人}\n\textbf{出租人（房東）}\n\ContractLandlords\n\vspace{0.5cm}\n\textbf{承租人（租客）}\n\ContractTenants\n共同居住於：\Propaddress",
-        "ja": r"\section*{1. 契約当事者}\n\textbf{賃貸人（家主）}\n\ContractLandlords\n\vspace{0.5cm}\n\textbf{賃借人（借主）}\n\ContractTenants\n両者の住所：\Propaddress",
-        "ko": r"\section*{1. 계약 당사자}\n\textbf{임대인 (집주인)}\n\ContractLandlords\n\vspace{0.5cm}\n\textbf{임차인 (세입자)}\n\ContractTenants\n거주지: \Propaddress",
-        "de": r"\section*{1. Vertragsparteien}\n\textbf{Vermieter}\n\ContractLandlords\n\vspace{0.5cm}\n\textbf{Mieter}\n\ContractTenants\nBeide wohnhaft in: \Propaddress",
-        "fr": r"\section*{1. Parties Contractantes}\n\textbf{Propriétaire}\n\ContractLandlords\n\vspace{0.5cm}\n\textbf{Locataire}\n\ContractTenants\nRésidant à: \Propaddress",
-        "es": r"\section*{1. Partes Contratantes}\n\textbf{Arrendador}\n\ContractLandlords\n\vspace{0.5cm}\n\textbf{Arrendatario}\n\ContractTenants\nResidiendo en: \Propaddress",
-        "it": r"\section*{1. Parti Contraenti}\n\textbf{Locatore}\n\ContractLandlords\n\vspace{0.5cm}\n\textbf{Conduttore}\n\ContractTenants\nResidenza: \Propaddress",
-        "ru": r"\section*{1. Стороны Договора}\n\textbf{Арендодатель}\n\ContractLandlords\n\vspace{0.5cm}\n\textbf{Арендатор}\n\ContractTenants\nАдрес: \Propaddress",
-        "pt": r"\section*{1. Partes Contratantes}\n\textbf{Senhorio}\n\ContractLandlords\n\vspace{0.5cm}\n\textbf{Inquilino}\n\ContractTenants\nResidindo em: \Propaddress",
-        "nl": r"\section*{1. Contractpartijen}\n\textbf{Verhuurder}\n\ContractLandlords\n\vspace{0.5cm}\n\textbf{Huurder}\n\ContractTenants\nBeiden wonend te: \Propaddress"
+        "zh_cn": r"\section*{1. 合同当事人}\n\textbf{出租人（房东）}\n\ContractLandlords{SUFFIX}\n\vspace{0.5cm}\n\textbf{承租人（租客）}\n\ContractTenants{SUFFIX}\n共同居住于：\Propaddress",
+        "zh_tw": r"\section*{1. 合約當事人}\n\textbf{出租人（房東）}\n\ContractLandlords{SUFFIX}\n\vspace{0.5cm}\n\textbf{承租人（租客）}\n\ContractTenants{SUFFIX}\n共同居住於：\Propaddress",
+        "ja": r"\section*{1. 契約当事者}\n\textbf{賃貸人（家主）}\n\ContractLandlords{SUFFIX}\n\vspace{0.5cm}\n\textbf{賃借人（借主）}\n\ContractTenants{SUFFIX}\n両者の住所：\Propaddress",
+        "ko": r"\section*{1. 계약 당사자}\n\textbf{임대인 (집주인)}\n\ContractLandlords{SUFFIX}\n\vspace{0.5cm}\n\textbf{임차인 (세입자)}\n\ContractTenants{SUFFIX}\n거주지: \Propaddress",
+        "de": r"\section*{1. Vertragsparteien}\n\textbf{Vermieter}\n\ContractLandlords{SUFFIX}\n\vspace{0.5cm}\n\textbf{Mieter}\n\ContractTenants{SUFFIX}\nBeide wohnhaft in: \Propaddress",
+        "fr": r"\section*{1. Parties Contractantes}\n\textbf{Propriétaire}\n\ContractLandlords{SUFFIX}\n\vspace{0.5cm}\n\textbf{Locataire}\n\ContractTenants{SUFFIX}\nRésidant à: \Propaddress",
+        "es": r"\section*{1. Partes Contratantes}\n\textbf{Arrendador}\n\ContractLandlords{SUFFIX}\n\vspace{0.5cm}\n\textbf{Arrendatario}\n\ContractTenants{SUFFIX}\nResidiendo en: \Propaddress",
+        "it": r"\section*{1. Parti Contraenti}\n\textbf{Locatore}\n\ContractLandlords{SUFFIX}\n\vspace{0.5cm}\n\textbf{Conduttore}\n\ContractTenants{SUFFIX}\nResidenza: \Propaddress",
+        "ru": r"\section*{1. Стороны Договора}\n\textbf{Арендодатель}\n\ContractLandlords{SUFFIX}\n\vspace{0.5cm}\n\textbf{Арендатор}\n\ContractTenants{SUFFIX}\nАдрес: \Propaddress",
+        "pt": r"\section*{1. Partes Contratantes}\n\textbf{Senhorio}\n\ContractLandlords{SUFFIX}\n\vspace{0.5cm}\n\textbf{Inquilino}\n\ContractTenants{SUFFIX}\nResidindo em: \Propaddress",
+        "nl": r"\section*{1. Contractpartijen}\n\textbf{Verhuurder}\n\ContractLandlords{SUFFIX}\n\vspace{0.5cm}\n\textbf{Huurder}\n\ContractTenants{SUFFIX}\nBeiden wonend te: \Propaddress"
     },
     "02_subject.tex": {
         "zh_cn": r"\section*{2. 租赁标的}\n出租人声明其为\Propunitnumber 号公寓的唯一所有权人，户型为\Propdisposition，面积 \Propaream~m\textsuperscript{2}，位于 \Propfloor 层，建筑编号 \Propbuildingnumber，座落于 \Propcadastralterritory，地址：\Propaddress。\n\n房屋的详细设备以交接协议为准。承租人确认已对该房屋进行妥善检查。",
@@ -136,6 +136,7 @@ def generate_packs():
             # Since our strings have explicit "\n", we should ensure proper newline formatting in file
             # However `r"\section..."` handles raw strings. But to split by explicit raw `\n` we replace them.
             # actually we can just format them properly.
+            content = content.replace('{SUFFIX}', lang.replace('_', '').upper())
             content = content.replace('\\n', '\n')
 
             filepath = os.path.join(lang_dir, filename)
