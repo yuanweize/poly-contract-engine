@@ -116,12 +116,48 @@ end
 generate_party_latex(data.landlords, "Landlord")
 generate_party_latex(data.tenants, "Tenant")
 
--- Expose language list and active modules to TeX
-local langs = ""
-for i, l in ipairs(data.project.languages) do
-    langs = langs .. l .. ","
+-- Inject Dynamic Fonts and Languages
+local polyglossia_map = {
+    cz = "czech", en = "english", de = "german", fr = "french",
+    es = "spanish", it = "italian", ru = "russian", pt = "portuguese", nl = "dutch"
+}
+
+local has_cjk = false
+local cjk_locale = nil
+local eur_langs = {}
+
+for _, lang in ipairs(data.project.languages) do
+    if lang == "zh_cn" or lang == "zh_tw" then
+        has_cjk = true
+        cjk_locale = "zh"
+    elseif lang == "ja" then
+        has_cjk = true
+        cjk_locale = "ja"
+    elseif lang == "ko" then
+        has_cjk = true
+        cjk_locale = "ko"
+    elseif polyglossia_map[lang] then
+        table.insert(eur_langs, polyglossia_map[lang])
+    end
 end
-tex_print("\\newcommand{\\ActiveLangs}{" .. langs .. "}")
+
+tex_print("\\usepackage{polyglossia}")
+if #eur_langs > 0 then
+    tex_print("\\setmainlanguage{" .. eur_langs[1] .. "}")
+    if #eur_langs > 1 then
+        tex_print("\\setotherlanguage{" .. eur_langs[2] .. "}")
+    end
+else
+    tex_print("\\setmainlanguage{english}")
+end
+
+if has_cjk then
+    tex_print("\\usepackage[default]{luatexja-fontspec}")
+    if cjk_locale == "zh" then
+        -- Force LuaTeX to use Fandol, standard Chinese font in TeXLive
+        tex_print("\\setmainjfont{FandolSong-Regular.otf}[BoldFont=FandolHei-Regular.otf]")
+    end
+end
 
 -- Generate the RenderModule macro based on active languages
 tex_print("\\newcommand{\\RenderModule}[1]{")

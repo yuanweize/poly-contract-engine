@@ -1,6 +1,6 @@
 {
   "project": {
-    "languages": ["cz", "en"],
+    "languages": ["zh_cn", "fr"],
     "modules": [
       "01_parties",
       "02_subject",

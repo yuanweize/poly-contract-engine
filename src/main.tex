@@ -1,10 +1,10 @@
 \documentclass[11pt]{article}
 \usepackage{styles}
 
-\begin{document}
-
-% Load config and generate macros via Lua directly
+% Load config and generate ALL macros and preamble packages via Lua
 \directlua{dofile("loader.lua")}
+
+\begin{document}
 
 \begin{center}
   \Huge \textbf{Nájemní smlouva} \\
