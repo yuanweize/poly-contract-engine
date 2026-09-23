@@ -55,5 +55,9 @@ make all
 ```
 3. Read the output pdf inside `dist/Contract_<TenantName>.pdf`!
 
-## License
-Provided under the MIT License.
+## License & Legal Disclaimer
+
+This project is licensed under the [MIT License](LICENSE).
+
+> **Disclaimer**: The contract templates, clauses, and sample legal documents provided in this repository are for demonstration, formatting, and document automation purposes only. They do not constitute formal legal advice. Contract and rental requirements vary significantly across legal jurisdictions; consult qualified legal counsel before using any generated contracts for binding transactions.
+
